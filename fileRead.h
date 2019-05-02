@@ -1,3 +1,6 @@
+#ifndef FILEREAD_H
+#define FILEREAD_H
+
 #include <string>
 #include <vector>
 #include <sstream> //istringstream
@@ -10,6 +13,12 @@
 
 using namespace std;
 // using namespace boost::python;
+
+class testAndTrainData{
+    public:
+    vector<vector<vector<double> >> test;
+    vector<vector<vector<double> >> train;
+} ;
 
 class CSVReader{
     string fileName;
@@ -38,7 +47,6 @@ vector<vector<double> > CSVReader::getData(){
             boost::algorithm::split(vec, line, boost::is_any_of(delimeter));
             vector<double> b;
             std::transform(vec.begin(), vec.end(), back_inserter(b), [](const string & astr){ return stod( astr) ; } ) ;
-
             dataList.push_back(b);
             if(b[0] == 0) count ++ ;
         }
@@ -51,7 +59,7 @@ vector<vector<double> > CSVReader::getData(){
 	}
 	// Close the File
 	file.close();
-    cout << "Total zeros "<<count<<endl;
+    // cout << "Total zeros "<<count<<endl;
 	return dataList;
 }
 
@@ -60,10 +68,11 @@ vector<double> returnNumberVector(vector<double> &vec){
     return vec;
 }
 
-int main()
+testAndTrainData calcData()
 {
     // Creating an object of CSVWriter
 	CSVReader reader("apparel-trainval.csv");
+    testAndTrainData dataObj;
  
 	// Get the data from CSV File
 	vector<vector<double> > dataList = reader.getData();
@@ -71,16 +80,6 @@ int main()
     vector<vector<vector<double> >> data(10);    
     vector<vector<vector<double> >> train_data(10);    
     vector<vector<vector<double> >> test_data(10);    
-    vector<vector<double> > zeros;
-    vector<vector<double> > ones;
-    vector<vector<double> > twos;
-    vector<vector<double> > threes;
-    vector<vector<double> > fours;
-    vector<vector<double> > fives;
-    vector<vector<double> > sixes;
-    vector<vector<double> > sevens;
-    vector<vector<double> > eights;
-    vector<vector<double> > nines;
     
 	// Print the content of row by row on screen
 
@@ -155,19 +154,20 @@ int main()
         train_data[i] = split_lo;
         test_data[i] = split_hi;
     }
-    for(int i=0; i<10; i++){
-        cout <<i<<"original"<<data[i].size()<<endl;
-        cout <<i<<"train"<<train_data[i].size()<<endl;
-        cout <<i<<"test"<<test_data[i].size()<<endl;
-    }
-    // cout << "Number of zeros "<<data[1].size()<<endl;
-
-    // for (long long i = 0 ;i<data[0].size();i++){
-    //     for(long long j =0 ;j<data[0][0].size();j++){
-    //         cout<<data[0][i][j]<<" ,";
-    //     }
-    //     cout<<endl;
+    // for(int i=0; i<10; i++){
+    //     cout <<i<<"original"<<data[i].size()<<endl;
+    //     cout <<i<<"train"<<train_data[i].size()<<endl;
+    //     cout <<i<<"test"<<test_data[i].size()<<endl;
     // }
+    
+    dataObj.train = train_data;
+    dataObj.test = test_data;
 
-	return 0;
+	return dataObj;
 }
+
+// int main(){
+//     return 0;
+// }
+
+#endif

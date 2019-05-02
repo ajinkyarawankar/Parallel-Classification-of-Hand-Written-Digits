@@ -72,30 +72,30 @@ double dotProduct(vector<double> &A , vector<double> &B){
     return rslt;
 }
 
-int main(){
-    // vector<double> A = {1,2,4};
-    vector<vector<double> > A{
-        {1,2,4},
-        {3,4,3},
-        {9,2,1},
-        {2,3,4}
-    };
+// int main(){
+//     // vector<double> A = {1,2,4};
+//     vector<vector<double> > A{
+//         {1,2,4},
+//         {3,4,3},
+//         {9,2,1},
+//         {2,3,4}
+//     };
 
-    // vector<double> B = {3,4,5};
-    vector<vector<double> > B{
-        {11,12},
-        {13,14},
-        {2,1}
-    };
+//     // vector<double> B = {3,4,5};
+//     vector<vector<double> > B{
+//         {11,12},
+//         {13,14},
+//         {2,1}
+//     };
 
-    auto a = dotProduct(A,B);
-    cout << typeid(a).name() <<endl;
-    for (int i =0 ; i<a.size();i++){
-        for (int j=0 ; j<a[0].size();j++){
-            cout << a[i][j] <<" ";
-        }
-        cout<<endl;
-    }
+//     auto a = dotProduct(A,B);
+//     cout << typeid(a).name() <<endl;
+//     for (int i =0 ; i<a.size();i++){
+//         for (int j=0 ; j<a[0].size();j++){
+//             cout << a[i][j] <<" ";
+//         }
+//         cout<<endl;
+//     }
 
-    return 0;
-}
+//     return 0;
+// }
