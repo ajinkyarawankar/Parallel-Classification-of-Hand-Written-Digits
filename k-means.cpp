@@ -28,7 +28,7 @@ vector<double> calcMean(vector<vector<double> > &sample){
         rslt[i] = total;
     }   
 
-    for(int i =0 ;i<sample.size();i++){
+    for(int i =0 ;i<sample[0].size();i++){
         rslt[i] = rslt[i]/sample.size();
     }
 
