@@ -7,7 +7,6 @@
 #include <iostream> // cout
 #include <fstream> // ifstream
 // #include <boost/python.hpp>
-#include <Python.h>
 #include <boost/algorithm/string.hpp>
 #include <algorithm>
 
