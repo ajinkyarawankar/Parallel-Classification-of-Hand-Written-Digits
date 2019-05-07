@@ -26,7 +26,7 @@ __global__ void VectorSub(double *a, double *b, double *c, int n)
     int i = threadIdx.x;
 
     if(i < n)
-        c[i] = a[i] + b[i];
+        c[i] = a[i] - b[i];
 }
 
 void printMatrix(int m, int n, double*A, int lda, const char* name)
